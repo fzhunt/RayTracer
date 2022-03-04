@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\RayTracingProject\Sphere.h">
+    <ClInclude Include="..\RayTracingProject\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\RayTracingProject\Camera.h">

@@ -148,7 +148,7 @@
     <ClInclude Include="..\RayTracingProject\Camera.h" />
     <ClInclude Include="..\RayTracingProject\Light.h" />
     <ClInclude Include="..\RayTracingProject\Ray.h" />
-    <ClInclude Include="..\RayTracingProject\Sphere.h" />
+    <ClInclude Include="..\RayTracingProject\Object.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\RayTracingProject\Source.cpp" />

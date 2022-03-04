@@ -1,4 +1,4 @@
-BACKGROUND 1 0 0        
+BACKGROUND 0.3 0.3 0.3        
 MAXDEPTH 17              
 LIGHT
     POS 10 10 100
@@ -12,15 +12,15 @@ LIGHT
 
 
 SPHERE
-    POS 0 0 0 RADIUS 45
+    POS 0 0 0 RADIUS 2
     DIFF 1.0 0.33 0.33  
     SPEC 1.0 1.0 1.0 	
 	SHININESS 20.0          
 	
 SPHERE
-    POS 0 60 75 RADIUS 15
-    DIFF 1.0 1.0 0.0  
-    SPEC 0.0 0.0 0.0 
-	SHININESS 200.0          
+    POS -10 -10 0 RADIUS 4
+    DIFF 0.0 0.33 0.93  
+    SPEC 1.0 1.0 1.0 	
+	SHININESS 20.0  
 
 RESOLUTION 800 800
