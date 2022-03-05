@@ -145,13 +145,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\RayTracingProject\Camera.h" />
-    <ClInclude Include="..\RayTracingProject\Light.h" />
-    <ClInclude Include="..\RayTracingProject\Ray.h" />
-    <ClInclude Include="..\RayTracingProject\Object.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Intersection.h" />
+    <ClInclude Include="Light.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="Ray.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\RayTracingProject\Source.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
