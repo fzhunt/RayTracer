@@ -19,6 +19,6 @@ public:
 		norm = glm::dvec3(0);
 		spec = glm::dvec3(0);
 		diff = glm::dvec3(0);
-		t = DBL_MAX; //should technically be DBL_MAX but I like having max length for the Ray to help visualize things
+		t = DBL_MAX; 
 	}
 };

@@ -1,32 +1,37 @@
-BACKGROUND 0.3 0.3 0.3        
+BACKGROUND 0 0 0        
 MAXDEPTH 17              
 LIGHT
     POS 10 10 100
+    DIFF 1.0 1.0 1.0 	
+    SPEC 1.0 1.0 1.0
+
+LIGHT
+    POS 0 -70 0
     DIFF 1.0 1.0 1.0 	
     SPEC 1.0 1.0 1.0	
 
 SPHERE
     POS 0 0 0 RADIUS 1
     DIFF 1.0 0.33 0.33  
-    SPEC 1.0 1.0 1.0 	
+    SPEC 0 0 0 	
 	SHININESS 20.0          
 
 SPHERE
     POS 3 0 0 RADIUS 1
     DIFF 1.0 0.33 0.33  
-    SPEC 1.0 1.0 1.0 	
+    SPEC 0 0 0	
 	SHININESS 20.0
 
 SPHERE
     POS -3 0 0 RADIUS 1
     DIFF 1.0 0.33 0.33  
-    SPEC 1.0 1.0 1.0 	
+    SPEC 0 0 0	
 	SHININESS 20.0
 
 SPHERE
     POS 10 0 0 RADIUS 1
     DIFF 1.0 0.33 0.33  
-    SPEC 1.0 1.0 1.0 	
+    SPEC 0 0 0	
 	SHININESS 20.0
 
 SPHERE
@@ -60,25 +65,45 @@ SPHERE
 	SHININESS 20.0
 
 SPHERE
-    POS -10 0 30 RADIUS 3
-    DIFF 0 0.7 0.7  
-    SPEC 1.0 1.0 1.0 	
+    POS -10 0 30 RADIUS 7
+    DIFF 0 0 0   
+    SPEC 1 1 1 	
 	SHININESS 20.0
 
 PLANE
-    NORM 1 0 0 
+    NORM -1 0 0 
     POS -40 0 0
-    DIFF 0 0.7 0.1255
-    SPEC 1.0 1.0 1.0
+    DIFF 0 0.1 .8
+    SPEC 0 0 0
 	SHININESS 10.0 
 
 
 PLANE
-    NORM 0 -1 0 
+    NORM 0 1 0 
     POS 0 50 0
     DIFF 0.7 0.7 0.1255
-    SPEC 1.0 1.0 1.0
+    SPEC 0 0 0
 	SHININESS 10.0
-PL
+
+PLANE
+    NORM 1 0 0 
+    POS 40 0 0
+    DIFF 0.7 0 0.8
+    SPEC 0 0 0
+	SHININESS 10.0
+
+PLANE
+    NORM 0 -1 0 
+    POS 0 -80 0
+    DIFF 0.5 1 0.5
+    SPEC 0 0 0
+	SHININESS 10.0
+
+PLANE
+    NORM 0 0 -1
+    POS 0 0 -100
+    DIFF 1 0 0.1255
+    SPEC 0 0 0
+	SHININESS 10.0
 
 RESOLUTION 800 800

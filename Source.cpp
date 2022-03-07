@@ -48,7 +48,7 @@ bool clearPath(Light light, glm::dvec3 pos) {
 	Ray ray = Ray(pos, light.pos - pos);
 	double t_val = glm::length(ray.dir);
 	ray.dir = glm::normalize(ray.dir);
-	ray.pos = ray.pos + ray.dir * 0.5;
+	ray.pos = ray.pos + ray.dir * 0.1;
 	if (spheres.size() > 0) {
 		for (int s = 0; s < spheres.size(); s++) {
 			Sphere temp = spheres[s];
@@ -96,8 +96,9 @@ Intersection firstInter(Ray ray, bool* collided) {
 			if (b * b - 4 * c >= 0) {
 				double t1 = (-b - sqrt(b * b - 4 * c)) / 2;
 				double t2 = (-b + sqrt(b * b - 4 * c)) / 2;
-				if (t2 > 0.0) {
+				if ((t2 > 0.0) & (t2 < inter.t || (t1 > 0 && t1 < inter.t))) {
 					*collided = true;
+					inter.lightVec.clear();
 					inter.diff = temp.diff;
 					inter.spec = temp.spec;
 					if (t1 > 0) {
@@ -134,7 +135,9 @@ Intersection firstInter(Ray ray, bool* collided) {
 					inter.diff = temp.diff;
 					inter.spec = temp.spec;
 					inter.pos = ray.pos + ray.dir * t;
+					inter.norm = temp.norm;
 					*collided = true;
+					inter.lightVec.clear();
 					for (unsigned int i = 0; i < lights.size(); i++) {
 						if (clearPath(lights[i], inter.pos)) {
 							inter.lightVec.push_back(lights[i]);
@@ -158,18 +161,23 @@ Intersection firstInter(Ray ray, bool* collided) {
 glm::dvec3 TraceRay(Ray ray, int depth) {
 	bool collided = false;
 	Intersection p = firstInter(ray,&collided);
+	p.norm = glm::normalize(p.norm);
 	glm::dvec3 diff = glm::dvec3(0);
 	glm::dvec3 spec = glm::dvec3(0);
+	glm::dvec3 reflectCol = glm::dvec3(0);
+	glm::dvec3 reflect = glm::normalize(glm::reflect(ray.dir, p.norm));
 	if (collided) {
-		diff += p.diff;
 		for (unsigned int i = 0; i < p.lightVec.size(); i++) {
 			Light tempLight = p.lightVec[i];
-			diff = diff * tempLight.diff;
+			//cout << glm::dot(p.norm, ray.dir) << '\n';
+			diff += p.diff * tempLight.diff * max(0.0, glm::dot(p.norm, ray.dir));
+			glm::dvec3 h = reflect + ray.dir;
+			spec += p.spec * tempLight.spec * max(0.0, glm::dot(p.norm, h));
 		}
-		if (p.lightVec.size() == 0) {
-			diff = glm::dvec3(0);
+		if ((p.spec.x > 0 || p.spec.y > 0 || p.spec.z > 0) && depth > 0) {
+			reflectCol = TraceRay(Ray(p.pos+reflect *0.1, reflect),depth-1);
 		}
-		return diff + spec;
+		return diff + spec + reflectCol * 0.5;
 	}
 	return glm::dvec3(back.x, back.y, back.z);
 }
@@ -291,7 +299,7 @@ int main(int argc, char* args[] ) {
 
 	
 	SDL_SaveBMP(screenSurface, "endResult.bmp");
-	SDL_Delay(2000);
+	SDL_Delay(5000);
 	planes.clear();
 	spheres.clear();
 	lights.clear();
